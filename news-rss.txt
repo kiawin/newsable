@@ -1,0 +1,30 @@
+thestar - nation
+http://thestar.com.my/rss/nation.xml
+
+thestar - sarawak
+http://thestar.com.my/rss/sarawak.xml
+
+thestar - business
+http://thestar.com.my/rss/business.xml
+
+thestar - columnists
+http://thestar.com.my/rss/columnists.xml
+
+thestar - opinion
+http://thestar.com.my/rss/opinion.xml
+
+thestar - metro central
+http://thestar.com.my/rss/central.xml
+
+thestar - metro north
+http://thestar.com.my/rss/north.xml
+
+thestar - metro perak
+http://thestar.com.my/rss/perak.xml
+
+thestar - metro south & east
+http://thestar.com.my/rss/southneast.xml
+
+thestar - metro sunday
+http://thestar.com.my/rss/sundaymetro.xml
+
