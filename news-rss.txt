@@ -28,3 +28,96 @@ http://thestar.com.my/rss/southneast.xml
 thestar - metro sunday
 http://thestar.com.my/rss/sundaymetro.xml
 
+freemalaysiatoday
+http://www.freemalaysiatoday.com/feed/
+
+malaysiakini bm - Berita
+www.malaysiakini.com/bm/news.rss
+
+malaysiakini bm - Kolum
+www.malaysiakini.com/bm/columns.rss
+
+malaysiakini bm - Surat
+www.malaysiakini.com/bm/letters.rss
+
+freemalaysiakini
+http://www.freemalaysiakini2.com/?feed=rss2
+
+utusan
+http://utusan.com.my/utusan/rss.asp
+
+mmail - nation
+http://www.mmail.com.my/taxonomy/term/1/0/feed
+
+mmail - business local
+http://www.mmail.com.my/channel/8/stories/0/feed
+
+mmail - sports local
+http://www.mmail.com.my/channel/22/stories/0/feed
+
+malaysianinsider - malaysia
+http://themalaysianinsider.com/rss/malaysia
+
+malaysianinsider - business
+http://themalaysianinsider.com/rss/business
+
+malaysianinsider - bahasa
+http://themalaysianinsider.com/rss/bahasa
+
+malaysianinsider - opinion
+http://themalaysianinsider.com/rss/opinion
+
+bernama - selected news
+http://www.bernama.com/bernama/v6/rss/english.php
+
+malaysian mirror
+http://www.malaysianmirror.com/component/bca-rss-syndicator/?feed_id=15
+
+nst - nation
+http://www.nst.com.my/cmlink/local-feed-1.2696?localLinksEnabled=false
+
+nst - streets
+http://www.nst.com.my/cmlink/streets-feed-1.3091
+
+nst - business
+http://www.btimes.com.my/Current_News/BTIMES/rss/rss_html?section=latest
+
+nst - sports
+http://www.nst.com.my/cmlink/sports-feed-1.3098?localLinksEnabled=false
+
+nst - opinion
+http://www.nst.com.my/cmlink/opinion-feed-1.3106?localLinksEnabled=false
+
+ipohecho
+http://ipohecho.com.my/v2/feed/
+
+mysinchew
+http://www.mysinchew.com/rss.xml
+
+malaysia-chronicle
+http://www.malaysia-chronicle.com/index.php?option=com_k2&view=itemlist&task=category&id=12:politics&Itemid=2&format=feed
+
+borneo post
+http://www.theborneopost.com/feed/
+
+the sun daily - local
+http://www.thesundaily.my/rss/local
+
+the sun daily - business
+http://www.thesundaily.my/rss/business
+
+the sun daily - sports
+http://www.thesundaily.my/rss/sports
+
+the sun daily - columns
+http://www.thesundaily.my/rss/columns
+
+the sun daily - the sun says
+http://www.thesundaily.my/rss/thesun-says
+
+the malaysians times
+http://www.themalaysiantimes.com.my/feed
+
+the selangor times
+http://www.theselangortimes.com.my/portal/feed/
+
