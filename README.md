@@ -1,7 +1,7 @@
 Newsable
 ========
 
-A rework of news-scrapper of SinarProject (http://sinarproject.org)
+A rework of news-scraper of SinarProject (http://sinarproject.org)
 
 # Dependencies
 
