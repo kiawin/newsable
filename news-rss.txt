@@ -121,3 +121,8 @@ http://www.themalaysiantimes.com.my/feed
 the selangor times
 http://www.theselangortimes.com.my/portal/feed/
 
+selangor times
+http://www.selangortimes.com/
+
+selangorku
+http://www.selangorku.com/
