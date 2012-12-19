@@ -1,9 +1,9 @@
-from news import Scraper
-from news import Logger
-from news import Stripper
+from newsable import Scraper
+from newsable import Logger
+from newsable import Stripper
 
-from news import NewsSource
-from news import NewsItem
+from newsable import NewsSource
+from newsable import NewsItem
 
 from pymongo.errors import OperationFailure
 

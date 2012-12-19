@@ -3,11 +3,11 @@ Malaysia News Scraper Library
 By kiawin@sinarproject.org
 """
 
-from news.Logger import Logger
-from news.Scraper import Scraper
-from news.DB import MongoDB
-from news.Stripper import Stripper
-from news.NewsSource import NewsSource
-from news.NewsItem import NewsItem
+from newsable.Logger import Logger
+from newsable.Scraper import Scraper
+from newsable.DB import MongoDB
+from newsable.Stripper import Stripper
+from newsable.NewsSource import NewsSource
+from newsable.NewsItem import NewsItem
 
-from news.TheStar import TheStar
+#from newsable.news.TheStar import TheStar

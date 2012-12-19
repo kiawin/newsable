@@ -1,5 +1,6 @@
 from pymongo import MongoClient
 
+
 class MongoDB():
     def __init__(self, dbname='test', colname = 'posts'):
         self.database = None
