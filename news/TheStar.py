@@ -1,28 +1,33 @@
-#!/usr/bin/env python
+from news import Scraper
+from news import Logger
+from news import Stripper
 
-from mongoengine import connection, OperationError
-from news.News import News
-from mongo.TheStar import TheStarNewsSource
-    
-class TheStar(News):
+from news import NewsSource
+from news import NewsItem
+
+from pymongo.errors import OperationFailure
+
+class TheStar():
     """ Class for TheStar News Scraper """ 
     
     def __init__(self):
         """ Constructor """
+        #logging.basicConfig(filename='theStar.log',level=logging.DEBUG, format='%(levelname)s:  %(message)s')
+        self._logger = Logger().get()
         
-        News.__init__(self)
-        News.useCSSSelector(self)
-        connection.connect("news")
-        
+        self.default_database = 'news'
+        self.default_collection = 'theStar' 
         self.default_url_prefix = 'http://thestar.com.my'
         self.default_expression = 'div.news_container h2 a'
+        self.default_news_item_expression = 'div#story_main div#story_content'
         self.default_language = 'eng'
-        self.config = {
+        self.sources = {
                      'nation': {
                                 'url': 'http://thestar.com.my/news/nation/',
                                 'tags': ['nation'],
                                 'language': self.default_language,
                                 'expr': self.default_expression,
+                                'news_item_expr': self.default_news_item_expression,
                                 'url_prefix': self.default_url_prefix
                                 },
                      'sarawak': {
@@ -103,34 +108,97 @@ class TheStar(News):
                                   'url_prefix': self.default_url_prefix
                                   }
                      }
+    
+    def sanitize(self, text):
+        return text.replace('\u0092','\'').replace('\u0091','\'')
+    
+    def scrapItem(self, url=None, category=None):
+        """
+        Save news item
+        """
+        newsSource = NewsSource(self.default_database, self.default_collection)
+        newsItem = NewsItem(self.default_database, self.default_collection)
         
-    def save(self):
-        """ Save all news urls into collection """
-        
-        for url in self.news_urls:
+        if(url == None):
+            item = newsSource.findEmptyNewsItem()
+            title = item['title']
+            url = item['url']
+            category = item['category']
+            self._logger.debug("Item: "+title+" / "+category)
+            
+        details = self.sources[category]
+        scraper = Scraper(url)
+        scrap = scraper.get()
+        for content in scrap.select(details['news_item_expr']):
+            #print(str(content))
+            newsItem.addNewsItem(url, content)
             try:
-                newsSources = TheStarNewsSource(
-                                                url=self.config[self.news_category]['url_prefix']+url,
-                                                category=self.news_category,
-                                                tags=self.config[self.news_category]['tags'],
-                                                language=self.config[self.news_category]['language']
-                                                )
-                newsSources.save()
-            except OperationError:
-                """ Error raised when url exist in collection """
+                newsItem.insertNewsItem()
+                self._logger.debug(Stripper().strip(str(content)))
+            except OperationFailure as of:
                 pass
+            finally:
+                newsItem.resetNewsItem()
+                
+        info = "Item Scraped: "+url
+        self._logger.info(info)
+        print(info)
     
-    def purge(self):
-        """ Purge the collection """
+    def scrapSource(self, category, multi=False):
+        """
+        Save all news urls from one category into collection
+        """
+        source = category #Interim
         
-        newsSources = TheStarNewsSource()
-        newsSources.drop_collection()
+        newsSource = NewsSource(self.default_database, self.default_collection)
+        count = {'total': 0, 'scraped': 0}
+        details = self.sources[source]
+        
+        scraper = Scraper(details['url'])
+        scrap = scraper.get()
+        self._logger.debug("Section: "+source)
+        for news in scrap.select(details['expr']):
+            #title = str(news.contents)
+            url = details['url_prefix'] + news['href']
+            title = self.sanitize(news.contents[0])
+            category = source
+            tags = details['tags']
+            language = details['language']
+            newsSource.addNewsSource(url, title, category, tags, language)
+            count['total'] = count['total'] + 1
+            self._logger.debug(count['total'])
+            self._logger.debug(url)
+            self._logger.debug(title)
+            try:
+                newsSource.insertNewsSources()
+                count['scraped'] = count['scraped'] + 1
+            except OperationFailure as of:
+                self._logger.error("Skipped - "+str(of))
+                pass
+            finally:
+                newsSource.resetNewsSources()
+                
+        if multi is False:
+            info = "Total Items Scraped: "+str(count['scraped'])+"/"+str(count['total'])
+            self._logger.info(info)
+            print(info)
+        else:
+            return count
     
-if __name__ == '__main__':
-    thestar = TheStar()
-    thestar.list('nation')
-    urls = thestar.news_urls
-    print len(urls)
-    for url in urls:
-        print url
-    thestar.save()
+    def scrapSources(self):
+        """
+        Save all news urls from all news sources into collection
+        """
+        count = {'total': 0, 'scraped': 0}
+        for source in self.sources:
+            multi = True
+            r = self.scrapSource(source, multi)
+            count['total'] = count['total'] + r['total']
+            count['scraped'] = count['scraped'] + r['scraped']
+        
+        info = "Total Items Scraped: "+str(count['scraped'])+"/"+str(count['total'])
+        self._logger.info(info)
+        print(info)
+    
+    def __del__(self):
+        pass
