@@ -1,5 +1,5 @@
 from datetime import datetime
-from news import MongoDB
+from newsable import MongoDB
 
 class NewsItem(MongoDB):
     def __init__(self, dbname='test', colname='posts'):

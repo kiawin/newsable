@@ -1,0 +1,1 @@
+from newsable.news.TheStar import TheStar
