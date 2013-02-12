@@ -15,42 +15,42 @@ class MySinchew(News):
         connection.connect('news')
         
         self.default_url_prefix = 'http://www.mysinchew.com'
-        self.default_expression = 'h4.title.teaser a#title'
+        self.default_news_source_expression = 'h4.title.teaser a#title'
         self.default_language = 'eng'
-        self.config = {
+        self.sources = {
                      'nation': {
                                 'url': 'http://www.mysinchew.com/taxonomy/term/4',
                                 'tags': ['nation'],
                                 'language': self.default_language,
-                                'expr': self.default_expression,
+                                'expr': self.default_news_source_expression,
                                 'url_prefix': self.default_url_prefix
                                 },
                      'opinion': {
                                   'url': 'http://www.mysinchew.com/taxonomy/term/12',
                                   'tags': ['opinion'],
                                   'language': self.default_language,
-                                  'expr': self.default_expression,
+                                  'expr': self.default_news_source_expression,
                                   'url_prefix': self.default_url_prefix
                                   },
                      'metro-mykampung': {
                                   'url': 'http://www.mysinchew.com/taxonomy/term/102',
                                   'tags': ['metro'],
                                   'language': self.default_language,
-                                  'expr': self.default_expression,
+                                  'expr': self.default_news_source_expression,
                                   'url_prefix': self.default_url_prefix
                                     },
                      'features': {
                                   'url': 'http://www.mysinchew.com/taxonomy/term/10',
                                   'tags': ['features','special'],
                                   'language': self.default_language,
-                                  'expr': self.default_expression,
+                                  'expr': self.default_news_source_expression,
                                   'url_prefix': self.default_url_prefix
                                },
                      'business': {
                                    'url': 'http://www.mysinchew.com/taxonomy/term/121',
                                    'tags': ['business'],
                                    'language': self.default_language,
-                                   'expr': self.default_expression,
+                                   'expr': self.default_news_source_expression,
                                    'url_prefix': self.default_url_prefix
                                 }
                      }
@@ -61,10 +61,10 @@ class MySinchew(News):
         for url in self.news_urls:
             try:
                 newsSources = MySinchewNewsSource(
-                                               url=self.config[self.news_category]['url_prefix']+url,
+                                               url=self.sources[self.news_category]['url_prefix']+url,
                                                category=self.news_category,
-                                               tags=self.config[self.news_category]['tags'],
-                                               language=self.config[self.news_category]['language']
+                                               tags=self.sources[self.news_category]['tags'],
+                                               language=self.sources[self.news_category]['language']
                                                )
                 newsSources.save()
             except OperationError:

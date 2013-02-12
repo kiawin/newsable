@@ -15,28 +15,28 @@ class MalaysiaKini(News):
         connection.connect("news")
         
         self.default_url_prefix = 'http://www.malaysiakini.com'
-        self.default_expression = 'div.browseRows ul li.browseRowHeadline a'
+        self.default_news_source_expression = 'div.browseRows ul li.browseRowHeadline a'
         self.default_language = 'zsm'
-        self.config = {
+        self.sources = {
                      'nation-bm': {
                                    'url':'http://www.malaysiakini.com/browse/my_news',
                                    'tags': ['nation'],
                                    'language': self.default_language,
-                                   'expr': self.default_expression,
+                                   'expr': self.default_news_source_expression,
                                    'url_prefix': self.default_url_prefix
                                    },
                      'columns-bm': {
                                     'url': 'http://www.malaysiakini.com/browse/my_columns',
                                     'tags': ['opinion'],
                                     'language': self.default_language,
-                                    'expr': self.default_expression,
+                                    'expr': self.default_news_source_expression,
                                     'url_prefix': self.default_url_prefix
                                     },
                      'letters-bm': {
                                     'url': 'http://www.malaysiakini.com/browse/my_letters',
                                     'tags': ['opinion'],
                                     'language': self.default_language,
-                                    'expr': self.default_expression,
+                                    'expr': self.default_news_source_expression,
                                     'url_prefix': self.default_url_prefix
                                     }
                      }
@@ -47,10 +47,10 @@ class MalaysiaKini(News):
         for url in self.news_urls:
             try:
                 newsSources = MalaysiaKiniNewsSource(
-                                                     url=self.config[self.news_category]['url_prefix']+url,
+                                                     url=self.sources[self.news_category]['url_prefix']+url,
                                                      category=self.news_category,
-                                                     tags=self.config[self.news_category]['tags'],
-                                                     language=self.config[self.news_category]['language']
+                                                     tags=self.sources[self.news_category]['tags'],
+                                                     language=self.sources[self.news_category]['language']
                                                      )
                 newsSources.save()
             except OperationError:

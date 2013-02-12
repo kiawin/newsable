@@ -15,56 +15,56 @@ class NewStraitsTimes(News):
         connection.connect('news')
         
         self.default_url_prefix = 'http://www.nst.com.my'
-        self.default_expression = 'div.news-content h3 a'
+        self.default_news_source_expression = 'div.news-content h3 a'
         self.default_language = 'eng'
-        self.config = {
+        self.sources = {
                      'nation': {
                                 'url': 'http://www.nst.com.my/nation/general',
                                 'tags': ['nation'],
                                 'language': self.default_language,
-                                'expr': self.default_expression,
+                                'expr': self.default_news_source_expression,
                                 'url_prefix': self.default_url_prefix
                                 },
                      'politics': {
                                   'url': 'http://www.nst.com.my/nation/politics',
                                   'tags': ['politics','nation'],
                                   'language': self.default_language,
-                                  'expr': self.default_expression,
+                                  'expr': self.default_news_source_expression,
                                   'url_prefix': self.default_url_prefix
                                   },
                      'extras': {
                                   'url': 'http://www.nst.com.my/nation/extras',
                                   'tags': ['extras','special'],
                                   'language': self.default_language,
-                                  'expr': self.default_expression,
+                                  'expr': self.default_news_source_expression,
                                   'url_prefix': self.default_url_prefix
                                     },
                      'umno': {
                                   'url': 'http://www.nst.com.my/nation/umno',
                                   'tags': ['features','special'],
                                   'language': self.default_language,
-                                  'expr': self.default_expression,
+                                  'expr': self.default_news_source_expression,
                                   'url_prefix': self.default_url_prefix
                                },
                      'metro-north': {
                                      'url': 'http://www.nst.com.my/streets/northern',
                                      'tags': ['metro','north'],
                                      'language': self.default_language,
-                                     'expr': self.default_expression,
+                                     'expr': self.default_news_source_expression,
                                      'url_prefix': self.default_url_prefix
                                  },
                      'metro-johor': {
                                    'url': 'http://www.nst.com.my/streets/johor',
                                    'tags': ['metro','south', 'johor'],
                                    'language': self.default_language,
-                                   'expr': self.default_expression,
+                                   'expr': self.default_news_source_expression,
                                    'url_prefix': self.default_url_prefix
                                    },
                      'metro-central': {
                                    'url': 'http://www.nst.com.my/streets/central',
                                    'tags': ['metro','central'],
                                    'language': self.default_language,
-                                   'expr': self.default_expression,
+                                   'expr': self.default_news_source_expression,
                                    'url_prefix': self.default_url_prefix
                                    }
                      }
@@ -75,10 +75,10 @@ class NewStraitsTimes(News):
         for url in self.news_urls:
             try:
                 newsSources = NewStraitsTimesNewsSource(
-                                               url=self.config[self.news_category]['url_prefix']+url,
+                                               url=self.sources[self.news_category]['url_prefix']+url,
                                                category=self.news_category,
-                                               tags=self.config[self.news_category]['tags'],
-                                               language=self.config[self.news_category]['language']
+                                               tags=self.sources[self.news_category]['tags'],
+                                               language=self.sources[self.news_category]['language']
                                                )
                 newsSources.save()
             except OperationError:

@@ -15,35 +15,35 @@ class MalaysiaChronicle(News):
         connection.connect('news')
         
         self.default_url_prefix = 'http://www.malaysia-chronicle.com'
-        self.default_expression = 'div.catItemBody div.catItemTitle a'
+        self.default_news_source_expression = 'div.catItemBody div.catItemTitle a'
         self.default_language = 'eng'
-        self.config = {
+        self.sources = {
                      'politics': {
                                   'url': 'http://www.malaysia-chronicle.com/index.php?option=com_k2&view=itemlist&layout=category&task=category&id=12&Itemid=2',
                                   'tags': ['politics','nation'],
                                   'language': self.default_language,
-                                  'expr': self.default_expression,
+                                  'expr': self.default_news_source_expression,
                                   'url_prefix': self.default_url_prefix
                                   },
                      'business': {
                                   'url': 'http://www.malaysia-chronicle.com/index.php?option=com_k2&view=itemlist&layout=category&task=category&id=13&Itemid=3',
                                   'tags': ['business'],
                                   'language': self.default_language,
-                                  'expr': self.default_expression,
+                                  'expr': self.default_news_source_expression,
                                   'url_prefix': self.default_url_prefix
                                     },
                      'social': {
                                   'url': 'http://www.malaysia-chronicle.com/index.php?option=com_k2&view=itemlist&layout=category&task=category&id=14&Itemid=4',
                                   'tags': ['social','metro'],
                                   'language': self.default_language,
-                                  'expr': self.default_expression,
+                                  'expr': self.default_news_source_expression,
                                   'url_prefix': self.default_url_prefix
                                },
                      'featured': {
                                    'url': 'http://www.malaysia-chronicle.com/index.php?option=com_k2&view=itemlist&layout=category&task=category&id=11&Itemid=10',
                                    'tags': ['features','special'],
                                    'language': self.default_language,
-                                   'expr': self.default_expression,
+                                   'expr': self.default_news_source_expression,
                                    'url_prefix': self.default_url_prefix
                                 }
                      }
@@ -54,10 +54,10 @@ class MalaysiaChronicle(News):
         for url in self.news_urls:
             try:
                 newsSources = MalaysiaChronicleNewsSource(
-                                               url=self.config[self.news_category]['url_prefix']+url,
+                                               url=self.sources[self.news_category]['url_prefix']+url,
                                                category=self.news_category,
-                                               tags=self.config[self.news_category]['tags'],
-                                               language=self.config[self.news_category]['language']
+                                               tags=self.sources[self.news_category]['tags'],
+                                               language=self.sources[self.news_category]['language']
                                                )
                 newsSources.save()
             except OperationError:

@@ -15,28 +15,28 @@ class FreeMalaysiaToday(News):
         connection.connect("news")
         
         self.default_url_prefix = ''
-        self.default_expression = 'div.ind-post h2 a'
+        self.default_news_source_expression = 'div.ind-post h2 a'
         self.default_language = 'und'
-        self.config = {
+        self.sources = {
                        'nation': {
                                   'url': 'http://www.freemalaysiatoday.com/category/nation/',
                                   'tags': ['nation'],
                                   'language': self.default_language,
-                                  'expr': self.default_expression,
+                                  'expr': self.default_news_source_expression,
                                   'url_prefix': self.default_url_prefix
                                   },
                        'business': {
                                     'url': 'http://www.freemalaysiatoday.com/category/business/',
                                     'tags': ['business'],
                                     'language': self.default_language,
-                                    'expr': self.default_expression,
+                                    'expr': self.default_news_source_expression,
                                     'url_prefix': self.default_url_prefix
                                     },
                        'opinion': {
                                    'url': 'http://www.freemalaysiatoday.com/category/opinion/',
                                    'tags': ['opinion'],
                                    'language': self.default_language,
-                                   'expr': self.default_expression,
+                                   'expr': self.default_news_source_expression,
                                    'url_prefix': self.default_url_prefix
                                    }
                        }
@@ -47,10 +47,10 @@ class FreeMalaysiaToday(News):
         for url in self.news_urls:
             try:
                 newsSources = FreeMalaysiaTodayNewsSource(
-                                                          url=self.config[self.news_category]['url_prefix']+url,
+                                                          url=self.sources[self.news_category]['url_prefix']+url,
                                                           category=self.news_category,
-                                                          tags=self.config[self.news_category]['tags'],
-                                                          language=self.config[self.news_category]['language']
+                                                          tags=self.sources[self.news_category]['tags'],
+                                                          language=self.sources[self.news_category]['language']
                                                           )
                 newsSources.save()
             except OperationError:

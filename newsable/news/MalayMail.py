@@ -15,35 +15,35 @@ class MalayMail(News):
         connection.connect('news')
         
         self.default_url_prefix = 'http://www.mmail.com.my'
-        self.default_expression = 'div.node-inner div.teaser-title a'
+        self.default_news_source_expression = 'div.node-inner div.teaser-title a'
         self.default_language = 'eng'
-        self.config = {
+        self.sources = {
                      'nation': {
                                 'url': 'http://www.mmail.com.my/nation',
                                 'tags': ['nation'],
                                 'language': self.default_language,
-                                'expr': self.default_expression,
+                                'expr': self.default_news_source_expression,
                                 'url_prefix': self.default_url_prefix
                                 },
                      'business': {
                                   'url': 'http://www.mmail.com.my/business',
                                   'tags': ['business'],
                                   'language': self.default_language,
-                                  'expr': self.default_expression,
+                                  'expr': self.default_news_source_expression,
                                   'url_prefix': self.default_url_prefix
                                   },
                      'metro': {
                                'url': 'http://www.mmail.com.my/Hotline',
                                'tags': ['metro'],
                                'language': self.default_language,
-                               'expr': self.default_expression,
+                               'expr': self.default_news_source_expression,
                                'url_prefix': self.default_url_prefix
                                },
                      'opinion': {
                                  'url': 'http://www.mmail.com.my/op-ed',
                                  'tags': ['opinion'],
                                  'language': self.default_language,
-                                 'expr': self.default_expression,
+                                 'expr': self.default_news_source_expression,
                                  'url_prefix': self.default_url_prefix
                                  }
                      }
@@ -54,10 +54,10 @@ class MalayMail(News):
         for url in self.news_urls:
             try:
                 newsSources = MalayMailNewsSource(
-                                                  url=self.config[self.news_category]['url_prefix']+url,
+                                                  url=self.sources[self.news_category]['url_prefix']+url,
                                                   category=self.news_category,
-                                                  tags=self.config[self.news_category]['tags'],
-                                                  language=self.config[self.news_category]['language']
+                                                  tags=self.sources[self.news_category]['tags'],
+                                                  language=self.sources[self.news_category]['language']
                                                   )
                 newsSources.save()
             except OperationError:

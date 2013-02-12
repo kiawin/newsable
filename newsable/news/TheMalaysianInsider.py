@@ -15,28 +15,28 @@ class TheMalaysianInsider(News):
         connection.connect('news')
         
         self.default_url_prefix = ''
-        self.default_expression = '//div[@class=\'sectionNews\']/h1/a | //div[@class=\'borderless\']/div[@class=\'bordered\']/h3/a | //div[@id=\'left\']/ul/li/a | //div[@id=\'center\']/ul/li/a | //div[@id=\'right\']/ul/li/a'
+        self.default_news_source_expression = '//div[@class=\'sectionNews\']/h1/a | //div[@class=\'borderless\']/div[@class=\'bordered\']/h3/a | //div[@id=\'left\']/ul/li/a | //div[@id=\'center\']/ul/li/a | //div[@id=\'right\']/ul/li/a'
         self.default_language = 'eng'
-        self.config = {
+        self.sources = {
                      'nation': {
                                 'url': 'http://www.themalaysianinsider.com/malaysia',
                                 'tags': ['nation'],
                                 'language': self.default_language,
-                                'expr': self.default_expression,
+                                'expr': self.default_news_source_expression,
                                 'url_prefix': self.default_url_prefix
                                 },
                      'business': {
                                   'url': 'http://www.themalaysianinsider.com/business',
                                   'tags': ['business'],
                                   'language': self.default_language,
-                                  'expr': self.default_expression,
+                                  'expr': self.default_news_source_expression,
                                   'url_prefix': self.default_url_prefix
                                   },
                      'bahasa': {
                                 'url': 'http://www.themalaysianinsider.com/bahasa',
                                 'tags': ['nation'],
                                 'language': 'ms',
-                                'expr': self.default_expression,
+                                'expr': self.default_news_source_expression,
                                 'url_prefix': self.default_url_prefix
                                 },
                      'opinion': {
@@ -54,10 +54,10 @@ class TheMalaysianInsider(News):
         for url in self.news_urls:
             try:
                 newsSources = TheMalaysianInsiderNewsSource(
-                                                            url=self.config[self.news_category]['url_prefix']+url,
+                                                            url=self.sources[self.news_category]['url_prefix']+url,
                                                             category=self.news_category,
-                                                            tags=self.config[self.news_category]['tags'],
-                                                            language=self.config[self.news_category]['language']
+                                                            tags=self.sources[self.news_category]['tags'],
+                                                            language=self.sources[self.news_category]['language']
                                                             )
                 newsSources.save()
             except OperationError:

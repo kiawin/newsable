@@ -15,35 +15,35 @@ class Selangorku(News):
         connection.connect('news')
         
         self.default_url_prefix = ''
-        self.default_expression = 'h3.entry-title a'
+        self.default_news_source_expression = 'h3.entry-title a'
         self.default_language = 'zsm'
-        self.config = {
+        self.sources = {
                      'state': {
                                 'url': 'http://www.selangorku.com/?cat=241',
                                 'tags': ['state', 'selangor'],
                                 'language': self.default_language,
-                                'expr': self.default_expression,
+                                'expr': self.default_news_source_expression,
                                 'url_prefix': self.default_url_prefix
                                 },
                      'mb-news': {
                                   'url': 'http://www.selangorku.com/?cat=11',
                                   'tags': ['state','selangor'],
                                   'language': self.default_language,
-                                  'expr': self.default_expression,
+                                  'expr': self.default_news_source_expression,
                                   'url_prefix': self.default_url_prefix
                                   },
                      'mb-programme': {
                                   'url': 'http://www.selangorku.com/?cat=12',
                                   'tags': ['state', 'selangor'],
                                   'language': self.default_language,
-                                  'expr': self.default_expression,
+                                  'expr': self.default_news_source_expression,
                                   'url_prefix': self.default_url_prefix
                                     },
                      'mb-politics': {
                                   'url': 'http://www.selangorku.com/?cat=54',
                                   'tags': ['state','selangor', 'politics'],
                                   'language': self.default_language,
-                                  'expr': self.default_expression,
+                                  'expr': self.default_news_source_expression,
                                   'url_prefix': self.default_url_prefix
                                }
                      }
@@ -54,10 +54,10 @@ class Selangorku(News):
         for url in self.news_urls:
             try:
                 newsSources = SelangorkuNewsSource(
-                                               url=self.config[self.news_category]['url_prefix']+url,
+                                               url=self.sources[self.news_category]['url_prefix']+url,
                                                category=self.news_category,
-                                               tags=self.config[self.news_category]['tags'],
-                                               language=self.config[self.news_category]['language']
+                                               tags=self.sources[self.news_category]['tags'],
+                                               language=self.sources[self.news_category]['language']
                                                )
                 newsSources.save()
             except OperationError:
