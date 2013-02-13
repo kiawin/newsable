@@ -1,39 +1,51 @@
 import unittest
-from newsable.news import TheStar
-from newsable.news import Bernama
-from newsable.news import TheSunDaily
-from newsable.news import BorneoPost
 
-class Test_news_itemTestCase(unittest.TestCase):
+from newsable.news import Bernama
+from newsable.news import BorneoPost
+from newsable.news import FreeMalaysiaToday
+from newsable.news import TheStar
+from newsable.news import TheSunDaily
+
+class TestNewsItem(unittest.TestCase):
     def setUp(self):
         pass
     
     def tearDown(self):
         pass
 
-    def test_news_item_theborneopost(self):
-        theBorneoPost = BorneoPost()
+    def bernama(self):
+        news = Bernama()
         url = None
         category = None
-        theBorneoPost.scrapItem(url, category)
+        news.scrapItem(url, category)
+            
+    def borneoPost(self):
+        news = BorneoPost()
+        url = None
+        category = None
+        news.scrapItem(url, category)
 
-    #def test_news_item_thesundaily(self):
-    #    theSunDaily = TheSunDaily()
-    #    url = None
-    #    category = None
-    #    theSunDaily.scrapItem(url, category)
+    def freeMalaysiaToday(self):
+        news = FreeMalaysiaToday()
+        url = None
+        category = None
+        news.scrapItem(url, category)
 
-    #def test_news_item_bernama(self):
-    #    bernama = Bernama()
-    #    url = None
-    #    category = None
-    #    bernama.scrapItem(url, category)
-    
-    #def test_news_item_thestar(self):
-    #    theStar = TheStar()
-    #    url = None
-    #    category = None
-    #    theStar.scrapItem(url, category)
+    def theStar(self):
+        news = TheStar()
+        url = None
+        category = None
+        news.scrapItem(url, category)
+
+    def theSunDaily(self):
+        news = TheSunDaily()
+        url = None
+        category = None
+        news.scrapItem(url, category)
     
 if __name__ == '__main__':
-    unittest.main()
+    #unittest.main()
+    tests = ['theSunDaily']
+    testClass = TestNewsItem
+    suite = unittest.TestSuite(map(testClass, tests))
+    unittest.TextTestRunner(verbosity=2).run(suite)

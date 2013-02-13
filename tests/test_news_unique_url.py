@@ -3,30 +3,14 @@ from newsable.news import TheStar
 
 from newsable.DB import MongoDB
 
-class Test_news_uniqueTestCase(unittest.TestCase):
+class TestNewsUnique(unittest.TestCase):
     def setUp(self):
         pass
     
     def tearDown(self):
         pass
 
-    def test_news_set_theborneopost_unique(self):
-        '''
-        Set url field as unique
-        '''
-        db = MongoDB('news','theBorneoPost')
-        db.setUnique('url')
-        db.__del__()
-    
-    def test_news_set_thesundaily_unique(self):
-        '''
-        Set url field as unique
-        '''
-        db = MongoDB('news','theSunDaily')
-        db.setUnique('url')
-        db.__del__()
-    
-    def test_news_set_bernama_unique(self):
+    def bernama(self):
         '''
         Set url field as unique
         '''
@@ -34,7 +18,23 @@ class Test_news_uniqueTestCase(unittest.TestCase):
         db.setUnique('url')
         db.__del__()
     
-    def test_news_set_thestar_uniques(self):
+    def borneoPost(self):
+        '''
+        Set url field as unique
+        '''
+        db = MongoDB('news','theBorneoPost')
+        db.setUnique('url')
+        db.__del__()
+
+    def freeMalaysiaToday(self):
+        '''
+        Set url field as unique
+        '''
+        db = MongoDB('news','freeMalaysiaToday')
+        db.setUnique('url')
+        db.__del__()
+    
+    def theStar(self):
         '''
         Set url field as unique
         '''
@@ -42,5 +42,18 @@ class Test_news_uniqueTestCase(unittest.TestCase):
         db.setUnique('url')
         db.__del__()
            
+    def theSunDaily(self):
+        '''
+        Set url field as unique
+        '''
+        db = MongoDB('news','theSunDaily')
+        db.setUnique('url')
+        db.__del__()
+    
 if __name__ == '__main__':
-    unittest.main()
+    #unittest.main()
+    tests = ['bernama', 'borneoPost', 'freeMalaysiaToday', 'theStar', 'theSunDaily']
+    #tests = ['theSunDaily']
+    testClass = TestNewsUnique
+    suite = unittest.TestSuite(map(testClass, tests))
+    unittest.TextTestRunner(verbosity=2).run(suite)

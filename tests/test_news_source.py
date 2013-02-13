@@ -1,31 +1,41 @@
 import unittest
-from newsable.news import TheStar
-from newsable.news import Bernama
-from newsable.news import TheSunDaily
-from newsable.news import BorneoPost
 
-class Test_news_sourceTestCase(unittest.TestCase):
+from newsable.news import Bernama
+from newsable.news import BorneoPost
+from newsable.news import FreeMalaysiaToday
+from newsable.news import TheStar
+from newsable.news import TheSunDaily
+
+class TestNewsSource(unittest.TestCase):
     def setUp(self):
         pass
     
     def tearDown(self):
         pass
     
-    def test_news_source_theborneopost(self):
-        theBorneoPost = BorneoPost()
-        theBorneoPost.scrapSource('nation')
+    def bernama(self):
+        news = Bernama()
+        news.scrapSource('metro-south')
+
+    def borneoPost(self):
+        news = BorneoPost()
+        news.scrapSource('nation')
     
-    #def test_news_source_thesundaily(self):
-    #    theSunDaily = TheSunDaily()
-    #    theSunDaily.scrapSource('nation')
+    def freeMalaysiaToday(self):
+        news = FreeMalaysiaToday()
+        news.scrapSource('nation')
     
-    #def test_news_source_thestar(self):
-    #    theStar = TheStar()
-    #    theStar.scrapSource('nation')
+    def theStar(self):
+        news = TheStar()
+        news.scrapSource('nation')
     
-    #def test_news_source_bernama(self):
-    #    bernama = Bernama()
-    #    bernama.scrapSource('metro-south')
+    def theSunDaily(self):
+        news = TheSunDaily()
+        news.scrapSource('nation')
     
 if __name__ == '__main__':
-    unittest.main()
+    #unittest.main()
+    tests = ['theSunDaily']
+    testClass = TestNewsSource
+    suite = unittest.TestSuite(map(testClass, tests))
+    unittest.TextTestRunner(verbosity=2).run(suite)

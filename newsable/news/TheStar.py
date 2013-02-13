@@ -109,7 +109,7 @@ class TheStar(News):
         '''
         Sanitize text
         '''
-        return text.replace('\u0092','\'').replace('\u0091','\'')
+        return text.replace('\u0092','\'').replace('\u0091','\'').replace('\n','').replace('\u2018','\'').replace('\u2019','\'')
 
     def __del__(self):
         pass

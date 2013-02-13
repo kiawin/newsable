@@ -80,7 +80,7 @@ class TheSunDaily(News):
         '''
         Sanitize text
         '''
-        return text.replace('\u2018','\'').replace('\u2019','\'').replace('\u0060','\'')
+        return text.replace('\u2018','\'').replace('\u2019','\'').replace('\u0060','\'').replace('\n','')
     
     def __del__(self):
         pass
