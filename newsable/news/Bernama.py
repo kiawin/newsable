@@ -13,6 +13,7 @@ class Bernama(News):
         super().__init__(self._news)
         
         self.default_url_prefix = 'http://www.bernama.com/bernama/v6/'
+        self.append_url_prefix = True
         self.default_news_source_expression = 'div#newsContainer p#titleNewsList a'
         self.default_news_item_expression = 'div#newsContainer2 p#news'
         self.default_language = 'eng'

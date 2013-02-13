@@ -13,6 +13,7 @@ class TheSunDaily(News):
         super().__init__(self._news)
         
         self.default_url_prefix = 'http://www.thesundaily.my'
+        self.append_url_prefix = True
         self.default_news_source_expression = 'h2.node-title a'
         self.default_news_item_expression= 'div#content-content div div.content'
         self.default_language = 'eng'

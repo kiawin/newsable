@@ -21,9 +21,11 @@ class News():
         self.default_database = 'news'
         self.default_collection = news
         self.default_url_prefix = None
+        self.append_url_prefix = False
         self.default_news_source_expression = None
         self.default_news_item_expression = None
         self.default_language = 'eng'
+
         self.sources = {}
     
     def sanitize(self, text):
@@ -80,9 +82,16 @@ class News():
         scraper = Scraper(details['url'])
         scrap = scraper.get()
         self.logger.debug("Section: "+source)
+        
+        #allNews = scrap.select(details['news_source_expr'])
+        #print(len(allNews))
+        
         for news in scrap.select(details['news_source_expr']):
             #title = str(news.contents)
-            url = details['url_prefix'] + news['href']
+            if self.append_url_prefix is True:
+                url = details['url_prefix'] + news['href']
+            else:
+                url = news['href']
             
             '''
             Customization to retrieve data
