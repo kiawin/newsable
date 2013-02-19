@@ -197,11 +197,11 @@ class BorneoPost(News):
                                        }
                      }
         
-    #def sanitize(self, text):
+    def sanitize(self, text):
         '''
         Sanitize text
         '''
-    #    return text.replace('\u0092','\'').replace('\u0091','\'')
+        return text.replace('\u2018','\'').replace('\u2019','\'')
 
     def __del__(self):
         pass    

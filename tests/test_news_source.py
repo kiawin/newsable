@@ -5,6 +5,7 @@ from newsable.news import BorneoPost
 from newsable.news import FreeMalaysiaToday
 from newsable.news import IpohEcho
 from newsable.news import MalayMail
+from newsable.news import MalaysiaChronicle
 from newsable.news import TheMalaysianInsider
 from newsable.news import TheStar
 from newsable.news import TheSunDaily
@@ -36,6 +37,10 @@ class TestNewsSource(unittest.TestCase):
         news = MalayMail()
         news.scrapSource('nation')
 
+    def malaysiaChronicle(self):
+        news = MalaysiaChronicle()
+        news.scrapSource('politics')
+        
     def theMalaysianInsider(self):
         news = TheMalaysianInsider()
         news.scrapSource('nation')
@@ -50,7 +55,7 @@ class TestNewsSource(unittest.TestCase):
     
 if __name__ == '__main__':
     #unittest.main()
-    tests = ['malayMail']
+    tests = ['malaysiaChronicle']
     testClass = TestNewsSource
     suite = unittest.TestSuite(map(testClass, tests))
     unittest.TextTestRunner(verbosity=2).run(suite)
