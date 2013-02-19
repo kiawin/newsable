@@ -31,6 +31,7 @@ class TheStar(News):
                                  'tags': ['nation','sarawak'],
                                  'language': self.default_language,
                                  'news_source_expr': self.default_news_source_expression,
+                                 'news_item_expr': self.default_news_item_expression,
                                  'url_prefix': self.default_url_prefix
                                  },
                      'business': {
@@ -38,6 +39,7 @@ class TheStar(News):
                                   'tags': ['business'],
                                   'language': self.default_language,
                                   'news_source_expr': self.default_news_source_expression,
+                                  'news_item_expr': self.default_news_item_expression,
                                   'url_prefix': self.default_url_prefix
                                   },
                      'metro-central': {
@@ -45,6 +47,7 @@ class TheStar(News):
                                        'tags': ['metro','central'],
                                        'language': self.default_language,
                                        'news_source_expr': self.default_news_source_expression,
+                                       'news_item_expr': self.default_news_item_expression,
                                        'url_prefix': self.default_url_prefix
                                        },
                      'metro-north': {
@@ -52,6 +55,7 @@ class TheStar(News):
                                      'tags': ['metro','north'],
                                      'language': self.default_language,
                                      'news_source_expr': self.default_news_source_expression,
+                                     'news_item_expr': self.default_news_item_expression,
                                      'url_prefix': self.default_url_prefix
                                      },
                      'metro-biz': {
@@ -59,6 +63,7 @@ class TheStar(News):
                                    'tags': ['metro','business'],
                                    'language': self.default_language,
                                    'news_source_expr': self.default_news_source_expression,
+                                   'news_item_expr': self.default_news_item_expression,
                                    'url_prefix': self.default_url_prefix
                                    },
                      'metro-southneast': {
@@ -66,6 +71,7 @@ class TheStar(News):
                                           'tags': ['metro','south','east'],
                                           'language': self.default_language,
                                           'news_source_expr': self.default_news_source_expression,
+                                          'news_item_expr': self.default_news_item_expression,
                                           'url_prefix': self.default_url_prefix
                                           },
                      'metro-perak': {
@@ -73,6 +79,7 @@ class TheStar(News):
                                      'tags': ['metro','perak','north'],
                                      'language': self.default_language,
                                      'news_source_expr': self.default_news_source_expression,
+                                     'news_item_expr': self.default_news_item_expression,
                                      'url_prefix': self.default_url_prefix
                                      },
                      'courts': {
@@ -80,6 +87,7 @@ class TheStar(News):
                                 'tags': ['courts'],
                                 'language': self.default_language,
                                 'news_source_expr': self.default_news_source_expression,
+                                'news_item_expr': self.default_news_item_expression,
                                 'url_prefix': self.default_url_prefix
                                 },
                      'parliament': {
@@ -87,6 +95,7 @@ class TheStar(News):
                                     'tags': ['parliament'],
                                     'language': self.default_language,
                                     'news_source_expr': self.default_news_source_expression,
+                                    'news_item_expr': self.default_news_item_expression,
                                     'url_prefix': self.default_url_prefix
                                     },
                      'opinion': {
@@ -94,6 +103,7 @@ class TheStar(News):
                                  'tags': ['opinion'],
                                  'language': self.default_language,
                                  'news_source_expr': self.default_news_source_expression,
+                                 'news_item_expr': self.default_news_item_expression,
                                  'url_prefix': self.default_url_prefix
                                  },
                      'maritime': {
@@ -101,6 +111,7 @@ class TheStar(News):
                                   'tags': ['maritime','business'],
                                   'language': self.default_language,
                                   'news_source_expr': self.default_news_source_expression,
+                                  'news_item_expr': self.default_news_item_expression,
                                   'url_prefix': self.default_url_prefix
                                   }
                      }

@@ -18,6 +18,7 @@ A rework of news-scraper of SinarProject (http://sinarproject.org)
 * Ipoh Echo [http://www.ipohecho.com.my]
 * Malay Mail [http://www.mmail.com.my]
 * Malaysia Chronicle [http://www.malaysia-chronicle.com]
+* Malaysia Kini BM [http://www.malaysiakini.com/bm]
 * The Star [http://www.thestar.com.my]
 * The Sun Daily [http://www.thesundaily.my]
  
