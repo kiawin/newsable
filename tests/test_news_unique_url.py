@@ -3,7 +3,7 @@ from newsable.news import TheStar
 
 from newsable.DB import MongoDB
 
-class TestNewsUnique(unittest.TestCase):
+class TestNewsUniqueUrl(unittest.TestCase):
     def setUp(self):
         pass
     
@@ -34,6 +34,22 @@ class TestNewsUnique(unittest.TestCase):
         db.setUnique('url')
         db.__del__()
     
+    def ipohEcho(self):
+        '''
+        Set url field as unique
+        '''
+        db = MongoDB('news','ipohEcho')
+        db.setUnique('url')
+        db.__del__()
+
+    def theMalaysianInsider(self):
+        '''
+        Set url field as unique
+        '''
+        db = MongoDB('news','theMalaysianInsider')
+        db.setUnique('url')
+        db.__del__()
+    
     def theStar(self):
         '''
         Set url field as unique
@@ -52,8 +68,8 @@ class TestNewsUnique(unittest.TestCase):
     
 if __name__ == '__main__':
     #unittest.main()
-    tests = ['bernama', 'borneoPost', 'freeMalaysiaToday', 'theStar', 'theSunDaily']
+    tests = ['bernama', 'borneoPost', 'freeMalaysiaToday', 'ipohEcho', 'theMalaysianInsider', 'theStar', 'theSunDaily']
     #tests = ['theSunDaily']
-    testClass = TestNewsUnique
+    testClass = TestNewsUniqueUrl
     suite = unittest.TestSuite(map(testClass, tests))
     unittest.TextTestRunner(verbosity=2).run(suite)

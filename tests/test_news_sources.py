@@ -3,10 +3,11 @@ import unittest
 from newsable.news import Bernama
 from newsable.news import BorneoPost
 from newsable.news import FreeMalaysiaToday
+from newsable.news import IpohEcho
 from newsable.news import TheStar
 from newsable.news import TheSunDaily
 
-class TestNewsSource(unittest.TestCase):
+class TestNewsSources(unittest.TestCase):
     def setUp(self):
         pass
     
@@ -24,6 +25,10 @@ class TestNewsSource(unittest.TestCase):
     def freeMalaysiaToday(self):
         news = FreeMalaysiaToday()
         news.scrapSources()
+
+    def ipohEcho(self):
+        news = IpohEcho()
+        news.scrapSources()
     
     def theSunDaily(self):
         news = TheSunDaily()
@@ -35,7 +40,7 @@ class TestNewsSource(unittest.TestCase):
             
 if __name__ == '__main__':
     #unittest.main()
-    tests = ['theSunDaily']
-    testClass = TestNewsSource
+    tests = ['ipohEcho']
+    testClass = TestNewsSources
     suite = unittest.TestSuite(map(testClass, tests))
     unittest.TextTestRunner(verbosity=2).run(suite)
