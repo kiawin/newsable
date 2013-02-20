@@ -52,10 +52,14 @@ class News():
         scraper = Scraper(url)
         scrap = scraper.get()
         
-        #for content in scrap.select(details['news_item_expr']):
-        content = scrap.select(details['news_item_expr'])[0]
-        #print(str(content))
-        #print("###")
+        #Include the possibility of scraping multiple elements as news content
+        allNews = scrap.select(details['news_item_expr'])
+        if len(allNews) > 1:
+            content = " ".join(str(n) for n in allNews)
+        else:
+            content = allNews[0]
+        #content = scrap.select(details['news_item_expr'])[0]
+        
         newsItem.addNewsItem(url, content)
         try:
             newsItem.insertNewsItem()
@@ -83,6 +87,7 @@ class News():
         scrap = scraper.get()
         self.logger.debug("Section: "+source)
         
+        #For temporal - Testing only
         allNews = scrap.select(details['news_source_expr'])
         print('Size: '+str(len(allNews)))
         

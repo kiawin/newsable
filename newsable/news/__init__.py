@@ -7,6 +7,8 @@ from newsable.news.MalayMail import MalayMail
 from newsable.news.MalaysiaChronicle import MalaysiaChronicle
 from newsable.news.MalaysiaKini import MalaysiaKini
 from newsable.news.MySinchew import MySinchew
+from newsable.news.NewStraitsTimes import NewStraitsTimes
+from newsable.news.Selangorku import Selangorku
 from newsable.news.TheMalaysianInsider import TheMalaysianInsider
 from newsable.news.TheStar import TheStar
 from newsable.news.TheSunDaily import TheSunDaily

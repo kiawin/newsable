@@ -8,6 +8,8 @@ from newsable.news import MalayMail
 from newsable.news import MalaysiaChronicle
 from newsable.news import MalaysiaKini
 from newsable.news import MySinchew
+from newsable.news import NewStraitsTimes
+from newsable.news import Selangorku
 from newsable.news import TheStar
 from newsable.news import TheSunDaily
 
@@ -49,6 +51,14 @@ class TestNewsSources(unittest.TestCase):
     def mySinchew(self):
         news = MySinchew()
         news.scrapSources()
+    
+    def newStraitsTimes(self):
+        news = NewStraitsTimes()
+        news.scrapSources()
+
+    def selangorku(self):
+        news = Selangorku()
+        news.scrapSources()
             
     def theSunDaily(self):
         news = TheSunDaily()
@@ -60,7 +70,7 @@ class TestNewsSources(unittest.TestCase):
             
 if __name__ == '__main__':
     #unittest.main()
-    tests = ['mySinchew']
+    tests = ['selangorku']
     testClass = TestNewsSources
     suite = unittest.TestSuite(map(testClass, tests))
     unittest.TextTestRunner(verbosity=2).run(suite)

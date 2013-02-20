@@ -20,6 +20,8 @@ A rework of news-scraper of SinarProject (http://sinarproject.org)
 * Malaysia Chronicle [http://www.malaysia-chronicle.com]
 * Malaysia Kini BM [http://www.malaysiakini.com/bm]
 * My SinChew [http://www.mysinchew.com]
+* New Straits Times [http://www.nst.com.my]
+* Selangorku [http://www.selangorku.com]
 * The Star [http://www.thestar.com.my]
 * The Sun Daily [http://www.thesundaily.my]
  
