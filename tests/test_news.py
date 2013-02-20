@@ -1,6 +1,6 @@
 import unittest
 from newsable import NewsSource
-from newsable.news import TheStar
+from newsable.news import MySinchew
 
 class Test_newsTestCase(unittest.TestCase):
     def setUp(self):
@@ -10,12 +10,12 @@ class Test_newsTestCase(unittest.TestCase):
         self.news = None
     
     def test_set_unique(self):
-        newsSource = NewsSource('news','theStar')
+        newsSource = NewsSource('news','mySinchew')
         newsSource.setUnique('url')
     
-    def test_thestar(self):
-        theStar = TheStar()
-        theStar.scrapSources()
+    def test_news(self):
+        news = MySinchew()
+        news.scrapSources()
         
     #def test_test_news(self):
     #    result = self.news.findOne()

@@ -83,8 +83,8 @@ class News():
         scrap = scraper.get()
         self.logger.debug("Section: "+source)
         
-        #allNews = scrap.select(details['news_source_expr'])
-        #print(len(allNews))
+        allNews = scrap.select(details['news_source_expr'])
+        print('Size: '+str(len(allNews)))
         
         for news in scrap.select(details['news_source_expr']):
             #title = str(news.contents)
