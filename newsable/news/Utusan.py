@@ -15,7 +15,7 @@ class Utusan(News):
         connection.connect('news')
         
         self.default_url_prefix = 'http://www.utusan.com.my'
-        self.default_news_source_expression = 'div#ContentContainer div.summary div a'
+        self.default_news_source_expression = ['div#ContentContainer div.summary div a']
         self.default_language = 'zsm'
         self.sources = {
                      'nation': {

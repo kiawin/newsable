@@ -14,7 +14,7 @@ class Bernama(News):
         
         self.default_url_prefix = 'http://www.bernama.com/bernama/v6/'
         self.append_url_prefix = True
-        self.default_news_source_expression = 'div#newsContainer p#titleNewsList a'
+        self.default_news_source_expression = ['div#newsContainer p#titleNewsList a']
         self.default_news_item_expression = 'div#newsContainer2 p#news'
         self.default_language = 'eng'
         self.sources = {
@@ -62,7 +62,7 @@ class Bernama(News):
                                      'url': 'http://www.bernama.com/bernama/state_news/news_list.php?cat=nt&page=1',
                                      'tags': ['metro','north'],
                                      'language': self.default_language,
-                                     'news_source_expr': 'td.news p a.news_summ',
+                                     'news_source_expr': ['td.news p a.news_summ'],
                                      'news_item_expr': self.default_news_item_expression,
                                      'url_prefix': 'http://www.bernama.com/bernama/state_news/'
                                  },
@@ -70,7 +70,7 @@ class Bernama(News):
                                     'url': 'http://www.bernama.com/bernama/state_news/news_list.php?cat=et&page=1',
                                     'tags': ['metro','east'],
                                     'language': self.default_language,
-                                    'news_source_expr': 'td.news p a.news_summ',
+                                    'news_source_expr': ['td.news p a.news_summ'],
                                     'news_item_expr': self.default_news_item_expression,
                                     'url_prefix': 'http://www.bernama.com/bernama/state_news/'
                                   },
@@ -78,7 +78,7 @@ class Bernama(News):
                                    'url': 'http://www.bernama.com/bernama/state_news/news_list.php?cat=st&page=1',
                                    'tags': ['metro','south'],
                                    'language': self.default_language,
-                                   'news_source_expr': 'td.news p a.news_summ',
+                                   'news_source_expr': ['td.news p a.news_summ'],
                                    'news_item_expr': self.default_news_item_expression,
                                    'url_prefix': 'http://www.bernama.com/bernama/state_news/'
                                    },
@@ -86,7 +86,7 @@ class Bernama(News):
                                    'url': 'http://www.bernama.com/bernama/state_news/news_list.php?cat=ct&page=1',
                                    'tags': ['metro','central'],
                                    'language': self.default_language,
-                                   'news_source_expr': 'td.news p a.news_summ',
+                                   'news_source_expr': ['td.news p a.news_summ'],
                                    'news_item_expr': self.default_news_item_expression,
                                    'url_prefix': 'http://www.bernama.com/bernama/state_news/'
                                    }

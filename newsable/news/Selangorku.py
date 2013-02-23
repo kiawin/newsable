@@ -14,7 +14,7 @@ class Selangorku(News):
         
         self.default_url_prefix = 'http://www.selangorku.com'
         self.append_url_prefix = False
-        self.default_news_source_expression = 'h3.entry-title a'
+        self.default_news_source_expression = ['h3.entry-title a']
         self.default_news_item_expression = 'div.entry-content.clearfix p'
         self.default_language = 'zsm'
         self.sources = {

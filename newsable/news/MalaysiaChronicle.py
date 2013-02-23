@@ -14,7 +14,7 @@ class MalaysiaChronicle(News):
         
         self.default_url_prefix = 'http://www.malaysia-chronicle.com'
         self.append_url_prefix = True
-        self.default_news_source_expression = 'div.catItemBody div.catItemTitle a'
+        self.default_news_source_expression = ['div.catItemBody div.catItemTitle a']
         self.default_news_item_expression = 'div.itemBody div.itemFullText'
         self.default_language = 'eng'
         self.sources = {

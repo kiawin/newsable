@@ -14,7 +14,7 @@ class MalaysiaKini(News):
         
         self.default_url_prefix = 'http://www.malaysiakini.com'
         self.append_url_prefix = True
-        self.default_news_source_expression = 'div.browseRows ul li.browseRowHeadline a'
+        self.default_news_source_expression = ['div.browseRows ul li.browseRowHeadline a']
         self.default_news_item_expression = 'div.contentBody'
         self.default_language = 'zsm'
         self.sources = {

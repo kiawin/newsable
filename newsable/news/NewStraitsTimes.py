@@ -14,7 +14,7 @@ class NewStraitsTimes(News):
         
         self.default_url_prefix = 'http://www.nst.com.my'
         self.append_url_prefix = True
-        self.default_news_source_expression = 'div.news-content h3 a'
+        self.default_news_source_expression = ['div.news-content h3 a']
         self.default_news_item_expression = 'div#main div.element.article div.news-article'
         #self.default_news_item_expression = 'div#main div.element.article div.news-article p'
         self.default_language = 'eng'

@@ -14,7 +14,7 @@ class MalayMail(News):
         
         self.default_url_prefix = 'http://www.mmail.com.my'
         self.append_url_prefix = True
-        self.default_news_source_expression = 'div.node-inner div.teaser-title a'
+        self.default_news_source_expression = ['div.node-inner div.teaser-title a']
         self.default_news_item_expression = 'div.node-inner div.content.clear-block'
         self.default_language = 'eng'
         self.sources = {

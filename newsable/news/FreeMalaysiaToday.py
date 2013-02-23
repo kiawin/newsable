@@ -14,7 +14,7 @@ class FreeMalaysiaToday(News):
         
         self.default_url_prefix = 'http://www.freemalaysiatoday.com'
         self.append_url_prefix = False
-        self.default_news_source_expression = 'div.ind-post h2 a'
+        self.default_news_source_expression = ['div.ind-post h2 a']
         self.default_news_item_expression = 'div.storycontent-post'
         self.default_language = 'eng'
         self.sources = {

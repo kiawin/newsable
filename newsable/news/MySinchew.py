@@ -14,7 +14,7 @@ class MySinchew(News):
         
         self.default_url_prefix = 'http://www.mysinchew.com'
         self.append_url_prefix = True
-        self.default_news_source_expression = 'div#front div#inpage_left h4.title.teaser a#title'
+        self.default_news_source_expression = ['div#front div#inpage_left h4.title.teaser a#title']
         self.default_news_item_expression = 'div.node div.content div.content_wrapper'
         self.default_language = 'eng'
         self.sources = {
