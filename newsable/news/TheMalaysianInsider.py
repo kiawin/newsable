@@ -12,7 +12,7 @@ class TheMalaysianInsider(News):
         self._news = 'theMalaysianInsider'
         super().__init__(self._news)
         
-        self.default_url_prefix = 'http://www.themalaysianinsider.com/'
+        self.default_url_prefix = 'http://www.themalaysianinsider.com'
         self.append_url_prefix = False
         #self.default_news_source_expression = '//div[@class=\'sectionNews\']/h1/a | //div[@class=\'borderless\']/div[@class=\'bordered\']/h3/a | //div[@id=\'left\']/ul/li/a | //div[@id=\'center\']/ul/li/a | //div[@id=\'right\']/ul/li/a'
         #self.default_news_source_expression = 'div[class=\'sectionNews\'] h1 a | div[class=\'borderless\'] div[class=\'bordered\'] h3 a | div[id=\'left\'] ul li a | div[id=\'center\'] ul li a | div[id=\'right\'] ul li a'

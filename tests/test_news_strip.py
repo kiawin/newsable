@@ -66,6 +66,12 @@ class TestNewsContentStrip(unittest.TestCase):
         r = newsItem.findOne({'url': url})
         print(Stripper().strip(r['content']))
     
+    def theMalaysianTimes(self):
+        url = 'http://www.themalaysiantimes.com.my/?p=62774'
+        newsItem = NewsItem('news','theMalaysianTimes')
+        r = newsItem.findOne({'url': url})
+        print(Stripper().strip(r['content']))
+    
     def theStar(self):
         url = 'http://thestar.com.my/news/story.asp?file=/2012/12/17/nation/20121217144240&sec=nation'
         newsItem = NewsItem('news','theStar')
@@ -80,7 +86,7 @@ class TestNewsContentStrip(unittest.TestCase):
         
 if __name__ == '__main__':
     #unittest.main()
-    tests = ['theMalaysianInsider']
+    tests = ['theMalaysianTimes']
     testClass = TestNewsContentStrip
     suite = unittest.TestSuite(map(testClass, tests))
     unittest.TextTestRunner(verbosity=2).run(suite)

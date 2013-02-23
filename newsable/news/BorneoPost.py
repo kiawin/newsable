@@ -14,7 +14,7 @@ class BorneoPost(News):
         
         self.default_url_prefix = 'http://www.theborneopost.com'
         self.append_url_prefix = False
-        self.default_news_source_expression = 'div.catList ul li h3 a'
+        self.default_news_source_expression = ['div.catList ul li h3 a']
         self.default_news_item_expression = 'div.newsBody.floatLeft'
         self.default_language = 'eng'
         self.sources = {

@@ -14,7 +14,7 @@ class TheStar(News):
         
         self.default_url_prefix = 'http://thestar.com.my'
         self.append_url_prefix = True
-        self.default_news_source_expression = 'div.news_container h2 a'
+        self.default_news_source_expression = ['div.news_container h2 a']
         self.default_news_item_expression = 'div#story_main div#story_content'
         self.default_language = 'eng'
         self.sources = {

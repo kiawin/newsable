@@ -15,7 +15,7 @@ class SelangorTimes(News):
         self.default_url_prefix = 'http://www.selangortimes.com/'
         self.append_url_prefix = True
         #self.default_news_source_expression = 'div.main_news_desc a[style="text-decoration:underline"]'
-        self.default_news_source_expression = 'div.main_news_desc p a.current_news_title'
+        self.default_news_source_expression = ['div.main_news_desc p a.current_news_title']
         #'div.main_news_desc div p a.current_news_title'
         #'//div[@class=\'main_news_desc\']/p/a[@class=\'current_news_title\'] | //div[@class=\'main_news_desc\']/div/p/a[@class=\'current_news_title\']'
         self.default_news_item_expression = 'div.contentdetails'

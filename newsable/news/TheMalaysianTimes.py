@@ -1,94 +1,84 @@
-#!/usr/bin/env python
-
-from mongoengine import connection, OperationError
-from news.News import News
-from mongo.TheMalaysianTimes import TheMalaysianTimesNewsSource
+from newsable.news import News
 
 class TheMalaysianTimes(News):
-    """ Class for TheMalaysianTimes News Scraper """ 
+    '''
+    Class for TheMalaysianTimes News Scraper
+    ''' 
     
     def __init__(self):
-        """ Constructor """
+        '''
+        Constructor
+        '''
+        self._news = 'theMalaysianTimes'
+        super().__init__(self._news)
         
-        News.__init__(self)
-        News.useCSSSelector(self)
-        connection.connect('news')
-        
-        self.default_url_prefix = ''
-        self.default_news_source_expression = 'h2.post-title a'
+        self.default_url_prefix = 'http://www.themalaysiantimes.com.my'
+        self.append_url_prefix = False
+        self.default_news_source_expression = ['h2.post-title a']
+        self.default_news_item_expression = 'div#content div.singlepost div div.entry'
         self.default_language = 'eng'
         self.sources = {
                      'nation': {
-                                'url': 'http://www.themalaysiantimes.com.my/category/nation',
+                                #'url': 'http://www.themalaysiantimes.com.my/category/nation',
+                                'url': 'http://www.themalaysiantimes.com.my/?cat=5',
                                 'tags': ['nation'],
                                 'language': self.default_language,
-                                'expr': self.default_news_source_expression,
+                                'news_source_expr': self.default_news_source_expression,
+                                'news_item_expr': self.default_news_item_expression,
                                 'url_prefix': self.default_url_prefix
                                 },
                      'nation-bm': {
-                                   'url': 'http://www.themalaysiantimes.com.my/category/bahasa-malaysia',
+                                   #'url': 'http://www.themalaysiantimes.com.my/category/bahasa-malaysia',
+                                   'url': 'http://www.themalaysiantimes.com.my/?cat=4',
                                    'tags': ['nation'],
                                    'language': 'zsm',
-                                   'expr': self.default_news_source_expression,
+                                   'news_source_expr': self.default_news_source_expression,
+                                   'news_item_expr': self.default_news_item_expression,
                                    'url_prefix': self.default_url_prefix
                                    },
                      'business': {
-                                  'url': 'http://www.themalaysiantimes.com.my/category/business',
+                                  #'url': 'http://www.themalaysiantimes.com.my/category/business',
+                                  'url': 'http://www.themalaysiantimes.com.my/?cat=6',
                                   'tags': ['business'],
                                   'language': self.default_language,
-                                  'expr': self.default_news_source_expression,
+                                  'news_source_expr': self.default_news_source_expression,
+                                  'news_item_expr': self.default_news_item_expression,
                                   'url_prefix': self.default_url_prefix
                                   },
                      'ge13': {
-                              'url': 'http://www.themalaysiantimes.com.my/category/ge13',
+                              #'url': 'http://www.themalaysiantimes.com.my/category/ge13',
+                              'url': 'http://www.themalaysiantimes.com.my/?cat=17',
                               'tags': ['ge13','politics'],
                               'language': self.default_language,
-                              'expr': self.default_news_source_expression,
+                              'news_source_expr': self.default_news_source_expression,
+                              'news_item_expr': self.default_news_item_expression,
                               'url_prefix': self.default_url_prefix
                               },
                      'education': {
-                                   'url': 'http://www.themalaysiantimes.com.my/category/education',
+                                   #'url': 'http://www.themalaysiantimes.com.my/category/education',
+                                   'url': 'http://www.themalaysiantimes.com.my/?cat=30',
                                    'tags': ['education'],
                                    'language': self.default_language,
-                                   'expr': self.default_news_source_expression,
+                                   'news_source_expr': self.default_news_source_expression,
+                                   'news_item_expr': self.default_news_item_expression,
                                    'url_prefix': self.default_url_prefix
                                    },
                      'opinion': {
-                                 'url': 'http://www.themalaysiantimes.com.my/category/opinion',
+                                 #'url': 'http://www.themalaysiantimes.com.my/category/opinion',
+                                 'url': 'http://www.themalaysiantimes.com.my/?cat=11',
                                  'tags': ['opinion'],
                                  'language': 'und',
-                                 'expr': self.default_news_source_expression,
+                                 'news_source_expr': self.default_news_source_expression,
+                                 'news_item_expr': self.default_news_item_expression,
                                  'url_prefix': self.default_url_prefix
                                  }
                      }
-        
-    def save(self):
-        """ Save all news urls into collection """
-        
-        for url in self.news_urls:
-            try:
-                newsSources = TheMalaysianTimesNewsSource(
-                                               url=self.sources[self.news_category]['url_prefix']+url,
-                                               category=self.news_category,
-                                               tags=self.sources[self.news_category]['tags'],
-                                               language=self.sources[self.news_category]['language']
-                                               )
-                newsSources.save()
-            except OperationError:
-                """ Error raised when url exist in collection """
-                pass
     
-    def purge(self):
-        """ Purge the collection """
-        
-        newsSources = TheMalaysianTimesNewsSource()
-        newsSources.drop_collection()
-            
-if __name__ == '__main__':
-    tmt = TheMalaysianTimes()
-    tmt.list('nation')
-    urls = tmt.news_urls
-    print len(urls)
-    for url in urls:
-        print url
-    tmt.save()
+    def sanitize(self, text):
+        '''
+        Sanitize text
+        '''
+        return text.replace('\u2018','\'').replace('\u2019','\'').replace('\u201C','\"').replace('\u201D','\"')
+
+    def __del__(self):
+        pass

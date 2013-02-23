@@ -24,6 +24,7 @@ A rework of news-scraper of SinarProject (http://sinarproject.org)
 * Selangorku [http://www.selangorku.com]
 * Selangor Times [http://www.selangortimes.com]
 * The Malaysian Insider [http://www.themalaysianinsider.com]
+* The Malaysian Times [http://www.themalaysiantimes.com.my]
 * The Star [http://www.thestar.com.my]
 * The Sun Daily [http://www.thesundaily.my]
  
