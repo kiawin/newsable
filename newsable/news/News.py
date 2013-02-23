@@ -54,6 +54,7 @@ class News():
         
         #Include the possibility of scraping multiple elements as news content
         allNews = scrap.select(details['news_item_expr'])
+        #print(allNews)#temp
         if len(allNews) > 1:
             content = " ".join(str(n) for n in allNews)
         else:
@@ -87,46 +88,52 @@ class News():
         scrap = scraper.get()
         self.logger.debug("Section: "+source)
         
-        #For temporal - Testing only
-        allNews = scrap.select(details['news_source_expr'])
-        print('Size: '+str(len(allNews)))
         
-        for news in scrap.select(details['news_source_expr']):
-            #title = str(news.contents)
-            if self.append_url_prefix is True:
-                url = details['url_prefix'] + news['href']
-            else:
-                url = news['href']
+        for news_source_expr in details['news_source_expr']:
             
-            '''
-            Customization to retrieve data
-            (Temporary measure)
-            '''
-            if self._news == 'bernama':
-                #title = str(news.font.b.contents[0])
-                title = self.sanitize(list(news.descendants)[len(list(news.descendants))-1])
-            else:
-                title = self.sanitize(news.contents[0])
+            #For temporal - Testing only
+            #allNews = scrap.select(details['news_source_expr'])
+            allNews = scrap.select(news_source_expr)
+            print('Size: '+str(len(allNews)))
             
-            print(self._news+" - Title: "+str(title))
-            #print(self._news+" - Title: "+title)
-            
-            category = source
-            tags = details['tags']
-            language = details['language']
-            newsSource.addNewsSource(url, title, category, tags, language)
-            count['total'] = count['total'] + 1
-            self.logger.debug(count['total'])
-            self.logger.debug(url)
-            self.logger.debug(title)
-            try:
-                newsSource.insertNewsSources()
-                count['scraped'] = count['scraped'] + 1
-            except OperationFailure as of:
-                self.logger.error("Skipped - "+str(of))
-                pass
-            finally:
-                newsSource.resetNewsSources()
+            #Convert self.default_news_source_expression as list
+            for news in scrap.select(news_source_expr):
+            #for news in scrap.select(details['news_source_expr']):
+                #title = str(news.contents)
+                if self.append_url_prefix is True:
+                    url = details['url_prefix'] + news['href']
+                else:
+                    url = news['href']
+                
+                '''
+                Customization to retrieve data
+                (Temporary measure)
+                '''
+                if self._news == 'bernama':
+                    #title = str(news.font.b.contents[0])
+                    title = self.sanitize(list(news.descendants)[len(list(news.descendants))-1])
+                else:
+                    title = self.sanitize(news.contents[0])
+                
+                print(self._news+" - Title: "+str(title))
+                #print(self._news+" - Title: "+title)
+                
+                category = source
+                tags = details['tags']
+                language = details['language']
+                newsSource.addNewsSource(url, title, category, tags, language)
+                count['total'] = count['total'] + 1
+                self.logger.debug(count['total'])
+                self.logger.debug(url)
+                self.logger.debug(title)
+                try:
+                    newsSource.insertNewsSources()
+                    count['scraped'] = count['scraped'] + 1
+                except OperationFailure as of:
+                    self.logger.error("Skipped - "+str(of))
+                    pass
+                finally:
+                    newsSource.resetNewsSources()
                 
         if multi is False:
             info = "Total Items Scraped: "+str(count['scraped'])+"/"+str(count['total'])

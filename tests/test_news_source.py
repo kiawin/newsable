@@ -70,7 +70,7 @@ class TestNewsSource(unittest.TestCase):
         
     def theMalaysianInsider(self):
         news = TheMalaysianInsider()
-        news.scrapSource('nation')
+        news.scrapSource('opinion')
     
     def theStar(self):
         news = TheStar()
@@ -82,7 +82,7 @@ class TestNewsSource(unittest.TestCase):
     
 if __name__ == '__main__':
     #unittest.main()
-    tests = ['selangorTimes']
+    tests = ['theMalaysianInsider']
     testClass = TestNewsSource
     suite = unittest.TestSuite(map(testClass, tests))
     unittest.TextTestRunner(verbosity=2).run(suite)
