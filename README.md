@@ -22,7 +22,12 @@ A rework of news-scraper of SinarProject (http://sinarproject.org)
 * My SinChew [http://www.mysinchew.com]
 * New Straits Times [http://www.nst.com.my]
 * Selangorku [http://www.selangorku.com]
+* Selangor Times [http://www.selangortimes.com]
 * The Star [http://www.thestar.com.my]
 * The Sun Daily [http://www.thesundaily.my]
  
 # How do I use it?
+
+# For Reading
+* Beautiful Soup 4.0 Doc [http://www.crummy.com/software/BeautifulSoup/bs4/doc/#]
+* W3C Selectors [http://www.w3.org/TR/CSS2/selector.html]

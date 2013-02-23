@@ -10,6 +10,7 @@ from newsable.news import MalaysiaKini
 from newsable.news import MySinchew
 from newsable.news import NewStraitsTimes
 from newsable.news import Selangorku
+from newsable.news import SelangorTimes
 from newsable.news import TheStar
 from newsable.news import TheSunDaily
 
@@ -79,6 +80,12 @@ class TestNewsItem(unittest.TestCase):
         url = None
         category = None
         news.scrapItem(url, category)
+
+    def selangorTimes(self):
+        news = SelangorTimes()
+        url = None
+        category = None
+        news.scrapItem(url, category)
         
     def theStar(self):
         news = TheStar()
@@ -94,7 +101,7 @@ class TestNewsItem(unittest.TestCase):
     
 if __name__ == '__main__':
     #unittest.main()
-    tests = ['selangorku']
+    tests = ['selangorTimes']
     testClass = TestNewsItem
     suite = unittest.TestSuite(map(testClass, tests))
     unittest.TextTestRunner(verbosity=2).run(suite)

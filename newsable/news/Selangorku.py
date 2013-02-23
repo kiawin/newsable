@@ -18,7 +18,7 @@ class Selangorku(News):
         self.default_news_item_expression = 'div.entry-content.clearfix p'
         self.default_language = 'zsm'
         self.sources = {
-                     'state': {
+                     'metro-selangor': {
                                 'url': 'http://www.selangorku.com/?cat=241',
                                 'tags': ['state', 'selangor'],
                                 'language': self.default_language,

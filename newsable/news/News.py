@@ -108,8 +108,8 @@ class News():
             else:
                 title = self.sanitize(news.contents[0])
             
-            #print(self._news+" - Title: "+str(title))
-            print(self._news+" - Title: "+title)
+            print(self._news+" - Title: "+str(title))
+            #print(self._news+" - Title: "+title)
             
             category = source
             tags = details['tags']
