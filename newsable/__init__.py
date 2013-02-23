@@ -1,8 +1,3 @@
-"""
-Malaysia News Scraper Library
-By kiawin@sinarproject.org
-"""
-
 from newsable.Logger import Logger
 from newsable.Scraper import Scraper
 from newsable.DB import MongoDB

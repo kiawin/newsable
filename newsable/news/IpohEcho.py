@@ -1,59 +1,46 @@
-#!/usr/bin/env python
-
-from mongoengine import connection, OperationError
-from news.News import News
-from mongo.IpohEcho import IpohEchoNewsSource
+from newsable.news import News
 
 class IpohEcho(News):
-    """ Class for IpohEcho News Scraper """ 
+    '''
+    Class for IpohEcho News Scraper
+    ''' 
     
     def __init__(self):
-        """ Constructor """
+        '''
+        Constructor
+        '''
+        self._news = 'ipohEcho'
+        super().__init__(self._news)
         
-        News.__init__(self)
-        News.useCSSSelector(self)
-        connection.connect('news')
-        
-        self.default_url_prefix = ''
-        self.default_expression = 'div.entry a'
+        self.default_url_prefix = 'http://ipohecho.com.my/v2/'
+        self.append_url_prefix = False
+        self.default_news_source_expression = 'div.entry h3.post-title a'
+        self.default_news_item_expression = 'div.entry'
         self.default_language = 'eng'
-        self.config = {
+        self.sources = {
+                     'featured': {
+                                  'url': 'http://ipohecho.com.my/v2/',
+                                  'tags': ['metro','north', 'ipoh'],
+                                  'language': self.default_language,
+                                  'news_source_expr': 'div.entry h2.post-title a',
+                                  'news_item_expr': self.default_news_item_expression,
+                                  'url_prefix': self.default_url_prefix
+                                 },
                      'metro-ipoh': {
-                                     'url': 'http://ipohecho.com.my/v2/',
-                                     'tags': ['metro','north', 'ipoh'],
-                                     'language': self.default_language,
-                                     'expr': self.default_expression,
-                                     'url_prefix': self.default_url_prefix
+                                    'url': 'http://ipohecho.com.my/v2/',
+                                    'tags': ['metro','north', 'ipoh'],
+                                    'language': self.default_language,
+                                    'news_source_expr': self.default_news_source_expression,
+                                    'news_item_expr': self.default_news_item_expression,
+                                    'url_prefix': self.default_url_prefix
                                  }
                      }
         
-    def save(self):
-        """ Save all news urls into collection """
-        
-        for url in self.news_urls:
-            try:
-                newsSources = IpohEchoNewsSource(
-                                               url=self.config[self.news_category]['url_prefix']+url,
-                                               category=self.news_category,
-                                               tags=self.config[self.news_category]['tags'],
-                                               language=self.config[self.news_category]['language']
-                                               )
-                newsSources.save()
-            except OperationError:
-                """ Error raised when url exist in collection """
-                pass
-    
-    def purge(self):
-        """ Purge the collection """
-        
-        newsSources = IpohEchoNewsSource()
-        newsSources.drop_collection()
-            
-if __name__ == '__main__':
-    ipohEcho = IpohEcho()
-    ipohEcho.list('nation')
-    urls = ipohEcho.news_urls
-    print len(urls)
-    for url in urls:
-        print url
-    ipohEcho.save()
+    #def sanitize(self, text):
+        '''
+        Sanitize text
+        '''
+    #    return text.replace('\u0092','\'').replace('\u0091','\'').replace('\n','').replace('\u2018','\'').replace('\u2019','\'')
+
+    def __del__(self):
+        pass

@@ -15,49 +15,49 @@ class Utusan(News):
         connection.connect('news')
         
         self.default_url_prefix = 'http://www.utusan.com.my'
-        self.default_expression = 'div#ContentContainer div.summary div a'
+        self.default_news_source_expression = 'div#ContentContainer div.summary div a'
         self.default_language = 'zsm'
-        self.config = {
+        self.sources = {
                      'nation': {
                                 'url': 'http://www.utusan.com.my/utusan/Dalam_Negeri',
                                 'tags': ['nation'],
                                 'language': self.default_language,
-                                'expr': self.default_expression,
+                                'expr': self.default_news_source_expression,
                                 'url_prefix': self.default_url_prefix
                                 },
                      'politics': {
                                   'url': 'http://www.utusan.com.my/utusan/Politik',
                                   'tags': ['politics','nation'],
                                   'language': self.default_language,
-                                  'expr': self.default_expression,
+                                  'expr': self.default_news_source_expression,
                                   'url_prefix': self.default_url_prefix
                                   },
                      'parliament': {
                                     'url': 'http://www.utusan.com.my/utusan/Parlimen',
                                     'tags': ['parliament'],
                                     'language': self.default_language,
-                                    'expr': self.default_expression,
+                                    'expr': self.default_news_source_expression,
                                     'url_prefix': self.default_url_prefix
                                     },
                      'crime': {
                                'url': 'http://www.utusan.com.my/utusan/Jenayah',
                                'tags': ['crime','nation'],
                                'language': self.default_language,
-                               'expr': self.default_expression,
+                               'expr': self.default_news_source_expression,
                                'url_prefix': self.default_url_prefix
                                },
                      'courts': {
                                 'url': 'http://www.utusan.com.my/utusan/Mahkamah',
                                 'tags': ['courts'],
                                 'language': self.default_language,
-                                'expr': self.default_expression,
+                                'expr': self.default_news_source_expression,
                                 'url_prefix': self.default_url_prefix
                                 },
                      'special': {
                                  'url': 'http://www.utusan.com.my/utusan/Laporan_Khas',
                                  'tags': ['special'],
                                  'language': self.default_language,
-                                 'expr': self.default_expression,
+                                 'expr': self.default_news_source_expression,
                                  'url_prefix': self.default_url_prefix
                                  },
                      'business': {
@@ -71,7 +71,7 @@ class Utusan(News):
                                    'url': 'http://www.utusan.com.my/utusan/iPendidikan',
                                    'tags': ['education'],
                                    'language': self.default_language,
-                                   'expr': self.default_expression,
+                                   'expr': self.default_news_source_expression,
                                    'url_prefix': self.default_url_prefix
                                    }
                      }
@@ -82,10 +82,10 @@ class Utusan(News):
         for url in self.news_urls:
             try:
                 newsSources = UtusanNewsSource(
-                                               url=self.config[self.news_category]['url_prefix']+url,
+                                               url=self.sources[self.news_category]['url_prefix']+url,
                                                category=self.news_category,
-                                               tags=self.config[self.news_category]['tags'],
-                                               language=self.config[self.news_category]['language']
+                                               tags=self.sources[self.news_category]['tags'],
+                                               language=self.sources[self.news_category]['language']
                                                )
                 newsSources.save()
             except OperationError:

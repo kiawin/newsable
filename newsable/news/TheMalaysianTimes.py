@@ -15,49 +15,49 @@ class TheMalaysianTimes(News):
         connection.connect('news')
         
         self.default_url_prefix = ''
-        self.default_expression = 'h2.post-title a'
+        self.default_news_source_expression = 'h2.post-title a'
         self.default_language = 'eng'
-        self.config = {
+        self.sources = {
                      'nation': {
                                 'url': 'http://www.themalaysiantimes.com.my/category/nation',
                                 'tags': ['nation'],
                                 'language': self.default_language,
-                                'expr': self.default_expression,
+                                'expr': self.default_news_source_expression,
                                 'url_prefix': self.default_url_prefix
                                 },
                      'nation-bm': {
                                    'url': 'http://www.themalaysiantimes.com.my/category/bahasa-malaysia',
                                    'tags': ['nation'],
                                    'language': 'zsm',
-                                   'expr': self.default_expression,
+                                   'expr': self.default_news_source_expression,
                                    'url_prefix': self.default_url_prefix
                                    },
                      'business': {
                                   'url': 'http://www.themalaysiantimes.com.my/category/business',
                                   'tags': ['business'],
                                   'language': self.default_language,
-                                  'expr': self.default_expression,
+                                  'expr': self.default_news_source_expression,
                                   'url_prefix': self.default_url_prefix
                                   },
                      'ge13': {
                               'url': 'http://www.themalaysiantimes.com.my/category/ge13',
                               'tags': ['ge13','politics'],
                               'language': self.default_language,
-                              'expr': self.default_expression,
+                              'expr': self.default_news_source_expression,
                               'url_prefix': self.default_url_prefix
                               },
                      'education': {
                                    'url': 'http://www.themalaysiantimes.com.my/category/education',
                                    'tags': ['education'],
                                    'language': self.default_language,
-                                   'expr': self.default_expression,
+                                   'expr': self.default_news_source_expression,
                                    'url_prefix': self.default_url_prefix
                                    },
                      'opinion': {
                                  'url': 'http://www.themalaysiantimes.com.my/category/opinion',
                                  'tags': ['opinion'],
                                  'language': 'und',
-                                 'expr': self.default_expression,
+                                 'expr': self.default_news_source_expression,
                                  'url_prefix': self.default_url_prefix
                                  }
                      }
@@ -68,10 +68,10 @@ class TheMalaysianTimes(News):
         for url in self.news_urls:
             try:
                 newsSources = TheMalaysianTimesNewsSource(
-                                               url=self.config[self.news_category]['url_prefix']+url,
+                                               url=self.sources[self.news_category]['url_prefix']+url,
                                                category=self.news_category,
-                                               tags=self.config[self.news_category]['tags'],
-                                               language=self.config[self.news_category]['language']
+                                               tags=self.sources[self.news_category]['tags'],
+                                               language=self.sources[self.news_category]['language']
                                                )
                 newsSources.save()
             except OperationError:

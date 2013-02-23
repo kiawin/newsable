@@ -1,73 +1,54 @@
-#!/usr/bin/env python
-
-from mongoengine import connection, OperationError
-from news.News import News
-from mongo.MalaysiaKini import MalaysiaKiniNewsSource
+from newsable.news import News
 
 class MalaysiaKini(News):
-    """ Class for MalaysiaKini News Scraper """ 
+    '''
+    Class for MalaysiaKini News Scraper
+    ''' 
     
     def __init__(self):
-        """ Constructor """
-        
-        News.__init__(self)
-        News.useCSSSelector(self)
-        connection.connect("news")
+        '''
+        Constructor
+        '''
+        self._news = 'malaysiaKini'
+        super().__init__(self._news)
         
         self.default_url_prefix = 'http://www.malaysiakini.com'
-        self.default_expression = 'div.browseRows ul li.browseRowHeadline a'
+        self.append_url_prefix = True
+        self.default_news_source_expression = 'div.browseRows ul li.browseRowHeadline a'
+        self.default_news_item_expression = 'div.contentBody'
         self.default_language = 'zsm'
-        self.config = {
+        self.sources = {
                      'nation-bm': {
-                                   'url':'http://www.malaysiakini.com/browse/my_news',
+                                   'url':'http://www.malaysiakini.com/browse/c/my/news',
                                    'tags': ['nation'],
                                    'language': self.default_language,
-                                   'expr': self.default_expression,
+                                   'news_source_expr': self.default_news_source_expression,
+                                   'news_item_expr': self.default_news_item_expression,
                                    'url_prefix': self.default_url_prefix
                                    },
                      'columns-bm': {
-                                    'url': 'http://www.malaysiakini.com/browse/my_columns',
+                                    'url': 'http://www.malaysiakini.com/browse/c/my/columns',
                                     'tags': ['opinion'],
                                     'language': self.default_language,
-                                    'expr': self.default_expression,
+                                    'news_source_expr': self.default_news_source_expression,
+                                    'news_item_expr': self.default_news_item_expression,
                                     'url_prefix': self.default_url_prefix
                                     },
                      'letters-bm': {
-                                    'url': 'http://www.malaysiakini.com/browse/my_letters',
+                                    'url': 'http://www.malaysiakini.com/browse/c/my/letters',
                                     'tags': ['opinion'],
                                     'language': self.default_language,
-                                    'expr': self.default_expression,
+                                    'news_source_expr': self.default_news_source_expression,
+                                    'news_item_expr': self.default_news_item_expression,
                                     'url_prefix': self.default_url_prefix
                                     }
                      }
         
-    def save(self):
-        """ Save all news urls into collection """
-        
-        for url in self.news_urls:
-            try:
-                newsSources = MalaysiaKiniNewsSource(
-                                                     url=self.config[self.news_category]['url_prefix']+url,
-                                                     category=self.news_category,
-                                                     tags=self.config[self.news_category]['tags'],
-                                                     language=self.config[self.news_category]['language']
-                                                     )
-                newsSources.save()
-            except OperationError:
-                """ Error raised when url exist in collection """
-                pass
-    
-    def purge(self):
-        """ Purge the collection """
-        
-        newsSources = MalaysiaKiniNewsSource()
-        newsSources.drop_collection()
-    
-if __name__ == '__main__':
-    mkini = MalaysiaKini()
-    mkini.list('nation')
-    urls = mkini.news_urls
-    print len(urls)
-    for url in urls:
-        print url
-    mkini.save()
+    #def sanitize(self, text):
+        '''
+        Sanitize text
+        '''
+    #    return text.replace('\u0092','\'').replace('\u0091','\'').replace('\n','').replace('\u2018','\'').replace('\u2019','\'')
+
+    def __del__(self):
+        pass

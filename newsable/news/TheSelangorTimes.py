@@ -15,42 +15,42 @@ class TheSelangorTimes(News):
         connection.connect('news')
         
         self.default_url_prefix = ''
-        self.default_expression = 'h2.post-title a'
+        self.default_news_source_expression = 'h2.post-title a'
         self.default_language = 'eng'
-        self.config = {
+        self.sources = {
                      'nation': {
                                 'url': 'http://www.theselangortimes.com.my/portal/category/nation/',
                                 'tags': ['nation'],
                                 'language': self.default_language,
-                                'expr': self.default_expression,
+                                'expr': self.default_news_source_expression,
                                 'url_prefix': self.default_url_prefix
                                 },
                      'nation-bm': {
                                    'url': 'http://www.theselangortimes.com.my/portal/category/bahasa-malaysia/',
                                    'tags': ['nation'],
                                    'language': 'zsm',
-                                   'expr': self.default_expression,
+                                   'expr': self.default_news_source_expression,
                                    'url_prefix': self.default_url_prefix
                                    },
                      'business': {
                                   'url': 'http://www.theselangortimes.com.my/portal/category/business/',
                                   'tags': ['business'],
                                   'language': self.default_language,
-                                  'expr': self.default_expression,
+                                  'expr': self.default_news_source_expression,
                                   'url_prefix': self.default_url_prefix
                                   },
                      'ge13': {
                               'url': 'http://www.theselangortimes.com.my/portal/category/towards-ge-13/',
                               'tags': ['ge13','politics'],
                               'language': self.default_language,
-                              'expr': self.default_expression,
+                              'expr': self.default_news_source_expression,
                               'url_prefix': self.default_url_prefix
                               },
                      'opinion': {
                                  'url': 'http://www.theselangortimes.com.my/portal/category/opinion/',
                                  'tags': ['opinion'],
                                  'language': self.default_language,
-                                 'expr': self.default_expression,
+                                 'expr': self.default_news_source_expression,
                                  'url_prefix': self.default_url_prefix
                                  }
                      }
@@ -61,10 +61,10 @@ class TheSelangorTimes(News):
         for url in self.news_urls:
             try:
                 newsSources = TheSelangorTimesNewsSource(
-                                               url=self.config[self.news_category]['url_prefix']+url,
+                                               url=self.sources[self.news_category]['url_prefix']+url,
                                                category=self.news_category,
-                                               tags=self.config[self.news_category]['tags'],
-                                               language=self.config[self.news_category]['language']
+                                               tags=self.sources[self.news_category]['tags'],
+                                               language=self.sources[self.news_category]['language']
                                                )
                 newsSources.save()
             except OperationError:
