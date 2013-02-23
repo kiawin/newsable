@@ -128,10 +128,18 @@ class TestNewsUniqueUrl(unittest.TestCase):
         db = MongoDB('news','theSunDaily')
         db.setUnique('url')
         db.__del__()
+
+    def utusan(self):
+        '''
+        Set url field as unique
+        '''
+        db = MongoDB('news','utusan')
+        db.setUnique('url')
+        db.__del__()
     
 if __name__ == '__main__':
     #unittest.main()
-    tests = ['bernama', 'borneoPost', 'freeMalaysiaToday', 'ipohEcho', 'malayMail', 'malaysiaChronicle', 'malaysiaKini', 'mySinchew', 'newStraitsTimes', 'selangorku', 'selangorTimes', 'theMalaysianInsider', 'theMalaysianTimes', 'theStar', 'theSunDaily']
+    tests = ['bernama', 'borneoPost', 'freeMalaysiaToday', 'ipohEcho', 'malayMail', 'malaysiaChronicle', 'malaysiaKini', 'mySinchew', 'newStraitsTimes', 'selangorku', 'selangorTimes', 'theMalaysianInsider', 'theMalaysianTimes', 'theStar', 'theSunDaily', 'utusan']
     #tests = ['theSunDaily']
     testClass = TestNewsUniqueUrl
     suite = unittest.TestSuite(map(testClass, tests))

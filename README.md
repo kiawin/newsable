@@ -3,7 +3,7 @@ Newsable
 
 A rework of news-scraper of SinarProject (http://sinarproject.org)
 
-# Dependencies - Python
+# Dependencies - Python 3.0
 * lxml
 * bs4
 * pymongo
@@ -27,6 +27,7 @@ A rework of news-scraper of SinarProject (http://sinarproject.org)
 * The Malaysian Times [http://www.themalaysiantimes.com.my]
 * The Star [http://www.thestar.com.my]
 * The Sun Daily [http://www.thesundaily.my]
+* Utusan [http://www.utusan.com.my]
  
 # How do I use it?
 

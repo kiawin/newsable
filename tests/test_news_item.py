@@ -15,6 +15,7 @@ from newsable.news import TheMalaysianInsider
 from newsable.news import TheMalaysianTimes
 from newsable.news import TheStar
 from newsable.news import TheSunDaily
+from newsable.news import Utusan
 
 class TestNewsItem(unittest.TestCase):
     def setUp(self):
@@ -112,10 +113,16 @@ class TestNewsItem(unittest.TestCase):
         url = None
         category = None
         news.scrapItem(url, category)
+        
+    def utusan(self):
+        news = Utusan()
+        url = None
+        category = None
+        news.scrapItem(url, category)
     
 if __name__ == '__main__':
     #unittest.main()
-    tests = ['theMalaysianTimes']
+    tests = ['utusan']
     testClass = TestNewsItem
     suite = unittest.TestSuite(map(testClass, tests))
     unittest.TextTestRunner(verbosity=2).run(suite)

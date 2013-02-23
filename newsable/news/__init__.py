@@ -14,3 +14,4 @@ from newsable.news.TheMalaysianInsider import TheMalaysianInsider
 from newsable.news.TheMalaysianTimes import TheMalaysianTimes
 from newsable.news.TheStar import TheStar
 from newsable.news.TheSunDaily import TheSunDaily
+from newsable.news.Utusan import Utusan

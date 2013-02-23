@@ -83,10 +83,16 @@ class TestNewsContentStrip(unittest.TestCase):
         newsItem = NewsItem('news', 'theSunDaily')
         r = newsItem.findOne({'url': url})
         print(Stripper().strip(r['content']))
+    
+    def utusan(self):
+        url = 'http://www.utusan.com.my/utusan/Dalam_Negeri/20130223/dn_24/Kerajaan-kaji-BI-sebagai-wajib-lulus-di-peringkat-SPM'
+        newsItem = NewsItem('news', 'utusan')
+        r = newsItem.findOne({'url': url})
+        print(Stripper().strip(r['content']))    
         
 if __name__ == '__main__':
     #unittest.main()
-    tests = ['theMalaysianTimes']
+    tests = ['utusan']
     testClass = TestNewsContentStrip
     suite = unittest.TestSuite(map(testClass, tests))
     unittest.TextTestRunner(verbosity=2).run(suite)

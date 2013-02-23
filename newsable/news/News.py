@@ -100,6 +100,7 @@ class News():
             for news in scrap.select(news_source_expr):
             #for news in scrap.select(details['news_source_expr']):
                 #title = str(news.contents)
+                #print(title)
                 if self.append_url_prefix is True:
                     url = details['url_prefix'] + news['href']
                 else:
@@ -112,6 +113,8 @@ class News():
                 if self._news == 'bernama':
                     #title = str(news.font.b.contents[0])
                     title = self.sanitize(list(news.descendants)[len(list(news.descendants))-1])
+                elif self._news == 'utusan' and len(news.contents) > 1:
+                        title = self.sanitize(news.contents[-1])
                 else:
                     title = self.sanitize(news.contents[0])
                 

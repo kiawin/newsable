@@ -15,6 +15,7 @@ from newsable.news import TheMalaysianInsider
 from newsable.news import TheMalaysianTimes
 from newsable.news import TheStar
 from newsable.news import TheSunDaily
+from newsable.news import Utusan
 
 class TestNewsSources(unittest.TestCase):
     def setUp(self):
@@ -82,10 +83,14 @@ class TestNewsSources(unittest.TestCase):
     def theStar(self):
         news = TheStar()
         news.scrapSources()
+
+    def utusan(self):
+        news = Utusan()
+        news.scrapSources()
             
 if __name__ == '__main__':
     #unittest.main()
-    tests = ['theMalaysianTimes']
+    tests = ['utusan']
     testClass = TestNewsSources
     suite = unittest.TestSuite(map(testClass, tests))
     unittest.TextTestRunner(verbosity=2).run(suite)
