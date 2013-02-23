@@ -29,6 +29,12 @@ A rework of news-scraper of SinarProject (http://sinarproject.org)
 * The Sun Daily [http://www.thesundaily.my]
 * Utusan [http://www.utusan.com.my]
  
+# How do run test
+* Step 1: test_news_unique_url.py
+* Step 2: test_news_source.py
+* Step 3: test_news_item.py
+* Step 4 (optional): test_news_source.py
+ 
 # How do I use it?
 
 # For Reading
