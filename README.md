@@ -31,6 +31,14 @@ A rework of news-scraper of SinarProject (http://sinarproject.org)
  
 # How do I use it?
 
+# Installation Guide for Ubuntu
+```
+# apt-get install build-essential mongodb python3 python3-dev python-setuptools
+# easy_install3 pip
+# pip-3.2 install beautifulsoup4
+# pip-3.2 install pymongo
+```
+
 # For Reading
 * Beautiful Soup 4.0 Doc [http://www.crummy.com/software/BeautifulSoup/bs4/doc/#]
 * W3C Selectors [http://www.w3.org/TR/CSS2/selector.html]
