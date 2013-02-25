@@ -42,3 +42,4 @@ A rework of news-scraper of SinarProject (http://sinarproject.org)
 # For Reading
 * Beautiful Soup 4.0 Doc [http://www.crummy.com/software/BeautifulSoup/bs4/doc/#]
 * W3C Selectors [http://www.w3.org/TR/CSS2/selector.html]
+* PyMongo C Extensions dependencies [http://api.mongodb.org/python/current/installation.html#dependencies-for-installing-c-extensions-on-unix]
